@@ -1,12 +1,10 @@
 import './App.css';
-import SearchBar from './components/searchBar/searchBar';
-import Card from './components/cards/card';
-import Header from './components/header/header';
+import SearchBar from './components/HomePage/searchBar/searchBar';
+import Card from './components/HomePage/cards/card';
 
-function App() {
+function App(): JSX.Element {
   return (
     <div className="App">
-      <Header />
       <SearchBar />
       <Card />
     </div>

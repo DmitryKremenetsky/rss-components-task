@@ -1,11 +1,17 @@
 import React from 'react';
 import './searchBar.css';
 
-export default class SearchBar extends React.Component {
-  constructor(props) {
+interface Props {}
+
+interface State {
+  searchTerm: string;
+}
+
+export default class SearchBar extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
-      searchHistory: '',
+      searchTerm: '',
     };
   }
 
@@ -17,11 +23,11 @@ export default class SearchBar extends React.Component {
   }
 
   componentDidUpdate() {
-    localStorage.setItem('searchTerm', this.state.searchHistory);
+    localStorage.setItem('SearchValue', this.state.searchTerm);
   }
 
-  handleChange = event => {
-    this.setState({ searchHistory: event.target.value });
+  handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    this.setState({ searchTerm: event.target.value });
   };
 
   render() {
@@ -29,10 +35,10 @@ export default class SearchBar extends React.Component {
       <div className="space-bar_container">
         <input
           type="text"
-          value={this.state.searchHistory}
+          value={this.state.searchTerm}
           onChange={this.handleChange}
         />
-        <button onClick={this.handleSearch}>Search</button>
+        <button>Search</button>
       </div>
     );
   }
