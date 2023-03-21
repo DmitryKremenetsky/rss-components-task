@@ -1,5 +1,10 @@
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from 'react-router-dom';
 import HomePage from './pages/HomePage/home';
 import AboutPage from './pages/AboutPage/About';
 import PageError from './pages/PageError/PageNotFound';
@@ -11,7 +16,8 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/error" element={<PageError />} />
+          <Route path="/404" element={<PageError />} />
+          <Route path="*" element={<Navigate replace to="/404" />} />
         </Routes>
       </div>
     </Router>
