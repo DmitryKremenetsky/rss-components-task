@@ -1,12 +1,13 @@
 import './App.css';
-import SearchBar from './components/HomePage/searchBar/searchBar';
-import Card from './components/HomePage/cards/card';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import HomePage from './pages/HomePage/home';
+import AboutPage from './pages/AboutPage/About';
 
-function App(): JSX.Element {
+function App() {
   return (
     <div className="App">
-      <SearchBar />
-      <Card />
+      <HomePage />
+      <AboutPage />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import './card.css';
-import data from '../../../data.json';
+import data from '../../data.json';
 
 export default class Card extends React.Component {
   render() {
