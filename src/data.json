@@ -1,28 +1,28 @@
 [
   {
     "id": 1,
-    "img": "public/green-car.jpg",
+    "img": "/green-car.jpg",
     "name" :"John", 
     "age": 30, 
     "car": "Green"
   },
   {
     "id": 2,
-    "img": "public/black-car.jpg",
+    "img": "/black-car.jpg",
     "name" :"Mark", 
     "age": 20, 
     "car": "Black"
   },
   {
     "id": 3,
-    "img": "public/white-car.jpg",
+    "img": "/white-car.jpg",
     "name" :"Even", 
     "age": 24, 
     "car": "White"
   },
   {
     "id": 4,
-    "img": "public/yellow-car.jpg",
+    "img": "/yellow-car.jpg",
     "name" :"Bable", 
     "age": 40, 
     "car": "Yellow"
