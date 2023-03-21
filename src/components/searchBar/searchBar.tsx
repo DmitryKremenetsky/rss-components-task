@@ -23,7 +23,7 @@ export default class SearchBar extends React.Component<Props, State> {
   }
 
   componentDidUpdate() {
-    localStorage.setItem('SearchValue', this.state.searchTerm);
+    localStorage.setItem('searchTerm', this.state.searchTerm);
   }
 
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
