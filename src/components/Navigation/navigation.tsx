@@ -13,9 +13,6 @@ export default class Navigation extends React.Component {
           <Link className="link" to={'/about'}>
             About us
           </Link>
-          <Link className="link" to={'/error'}>
-            Click and catch error
-          </Link>
         </div>
       </div>
     );
