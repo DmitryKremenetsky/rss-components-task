@@ -6,6 +6,16 @@ export default class Navigation extends React.Component {
   render(): JSX.Element {
     return (
       <div>
+        <div>
+          <h2>
+            {window.location.pathname === '/'
+              ? 'Home'
+              : window.location.pathname === '/about'
+              ? 'About'
+              : 'Error'}{' '}
+            page
+          </h2>
+        </div>
         <div className="link-container">
           <Link className="link" to={'/'}>
             Home
