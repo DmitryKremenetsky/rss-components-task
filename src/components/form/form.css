@@ -1,0 +1,21 @@
+.form-container {
+  margin-top: 80px;
+}
+
+.form-element {
+  margin: 10px;
+}
+
+.form-text {
+  margin-right: 5px;
+  color: #fff;
+}
+
+.form-personal {
+  margin-left: 5px;
+  color: #fff;
+}
+
+.upload-input {
+  color: #fff;
+}
