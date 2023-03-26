@@ -1,10 +1,5 @@
 import './App.css';
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Navigate,
-} from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
 import HomePage from './pages/HomePage/home';
 import AboutPage from './pages/AboutPage/About';
 import PageError from './pages/PageError/PageNotFound';

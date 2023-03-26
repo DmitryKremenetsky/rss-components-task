@@ -1,14 +1,12 @@
 import React from 'react';
 import './searchBar.css';
 
-interface Props {}
-
 interface State {
   searchTerm: string;
 }
 
-export default class SearchBar extends React.Component<Props, State> {
-  constructor(props: Props) {
+export default class SearchBar extends React.Component<void, State> {
+  constructor(props: void) {
     super(props);
     this.state = {
       searchTerm: '',
@@ -33,11 +31,7 @@ export default class SearchBar extends React.Component<Props, State> {
   render() {
     return (
       <div className="space-bar_container">
-        <input
-          type="text"
-          value={this.state.searchTerm}
-          onChange={this.handleChange}
-        />
+        <input type="text" value={this.state.searchTerm} onChange={this.handleChange} />
         <button>Search</button>
       </div>
     );

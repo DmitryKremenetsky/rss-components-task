@@ -9,9 +9,7 @@ export default class AboutPage extends React.Component {
         <Navigation />
         <div className="container">
           <a href="https://github.com/DmitryKremenetsky">GitHub click</a>
-          <a href="https://github.com/DmitryKremenetsky/rss-components-task">
-            repo link click
-          </a>
+          <a href="https://github.com/DmitryKremenetsky/rss-components-task">repo link click</a>
         </div>
       </div>
     );
