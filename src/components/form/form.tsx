@@ -12,6 +12,8 @@ interface Props {
 interface State {
   profilePicture: File | null;
   consentToData: boolean;
+  cards: Props[];
+  showMessage: boolean;
 }
 
 export default class Form extends Component<Props, State> {
@@ -35,6 +37,8 @@ export default class Form extends Component<Props, State> {
     this.state = {
       profilePicture: null,
       consentToData: false,
+      cards: [],
+      showMessage: false,
     };
   }
 
@@ -48,7 +52,11 @@ export default class Form extends Component<Props, State> {
     const profilePicture = this.state.profilePicture;
     const consentToData = this.state.consentToData;
 
-    console.log(name, date, color, gender, profilePicture, consentToData);
+    const newCard = { nameInput: name, dateInput: date, colorSelect: color, gender };
+    const updatedCards = [...this.state.cards, newCard];
+    this.setState({ cards: updatedCards, showMessage: true });
+
+    this.clearForm();
   };
 
   handleProfilePictureChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -59,6 +67,29 @@ export default class Form extends Component<Props, State> {
   handleConsentToDataChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const consent = event.target.checked;
     this.setState({ consentToData: consent });
+  };
+
+  clearForm = () => {
+    this.nameInput.current!.value = '';
+    this.dateInput.current!.value = '';
+    this.colorSelect.current!.value = '';
+    this.gender.current!.checked = false;
+    this.profilePictureInput.current!.value = '';
+    this.consentToDataInput.current!.checked = false;
+  };
+
+  renderCards = () => {
+    return this.state.cards.map((card, index) => (
+      <div key={index} className="card">
+        <div className="card-name">{card.nameInput}</div>
+        <div className="card-date">{card.dateInput}</div>
+        <div className="card-color">{card.colorSelect}</div>
+        <div className="card-gender">{card.gender}</div>
+        {card.profilePicture && (
+          <img src={URL.createObjectURL(card.profilePicture)} alt="Profile Picture" />
+        )}
+      </div>
+    ));
   };
 
   render() {
@@ -121,6 +152,10 @@ export default class Form extends Component<Props, State> {
             Submit
           </button>
         </form>
+        {this.state.showMessage && <div className="message">Card added successfully!</div>}
+        <div className="cards-container">
+          <div className="cards-container">{this.renderCards()}</div>
+        </div>
       </div>
     );
   }

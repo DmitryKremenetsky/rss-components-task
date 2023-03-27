@@ -19,3 +19,7 @@
 .upload-input {
   color: #fff;
 }
+
+.cards-container {
+  display: flex;
+}
