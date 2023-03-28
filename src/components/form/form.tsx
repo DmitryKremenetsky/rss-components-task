@@ -116,15 +116,15 @@ export default class Form extends Component<Props, State> {
             <label className="form-text" htmlFor="name">
               Name:
             </label>
-            <input type="text" id="name" name="name" ref={this.nameInput} />
+            <input type="text" id="name" name="name" required ref={this.nameInput} />
           </div>
           <div className="form-element">
             <label className="form-text">Date:</label>
-            <input type="date" id="date" name="date" ref={this.dateInput} />
+            <input type="date" id="date" name="date" required ref={this.dateInput} />
           </div>
           <div className="form-element">
             <label className="form-text">Choose a color:</label>
-            <select id="selectColor" name="selectColor" ref={this.colorSelect}>
+            <select id="selectColor" name="selectColor" required ref={this.colorSelect}>
               <option value="red">Red</option>
               <option value="green">Green</option>
               <option value="blue">Blue</option>
@@ -138,6 +138,7 @@ export default class Form extends Component<Props, State> {
                 id="male"
                 name="gender"
                 value="male"
+                required
                 onChange={this.handleGenderChange}
                 ref={this.genderInput}
               />
@@ -146,6 +147,7 @@ export default class Form extends Component<Props, State> {
                 type="radio"
                 id="female"
                 name="gender"
+                required
                 value="female"
                 onChange={this.handleGenderChange}
               />
@@ -154,6 +156,7 @@ export default class Form extends Component<Props, State> {
                 type="radio"
                 id="other"
                 name="gender"
+                required
                 value="other"
                 onChange={this.handleGenderChange}
               />
@@ -176,6 +179,7 @@ export default class Form extends Component<Props, State> {
             <input
               type="checkbox"
               id="personalData"
+              required
               name="personalData"
               onChange={this.handleConsentToDataChange}
               ref={this.consentToDataInput}
