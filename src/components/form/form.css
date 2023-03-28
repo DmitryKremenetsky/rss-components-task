@@ -1,0 +1,51 @@
+.form-container {
+  margin-top: 80px;
+}
+
+.form-element {
+  margin: 10px;
+}
+
+.form-text {
+  margin-right: 5px;
+  color: #fff;
+}
+
+.form-personal {
+  margin-left: 5px;
+  color: #fff;
+}
+
+.upload-input {
+  color: #fff;
+}
+
+.cards-container {
+  display: flex;
+}
+
+.gender-switcher {
+  color: #fff;
+}
+
+.gender-switcher input {
+  margin-right: 5px;
+}
+
+.gender-switcher label {
+  margin-right: 5px;
+}
+
+.card {
+  width: 300px;
+  height: 300px;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+}
+
+.message {
+  color: #fff;
+}
