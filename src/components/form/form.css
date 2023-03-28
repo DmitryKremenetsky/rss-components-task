@@ -23,3 +23,15 @@
 .cards-container {
   display: flex;
 }
+
+.gender-switcher {
+  color: #fff;
+}
+
+.gender-switcher input {
+  margin-right: 5px;
+}
+
+.gender-switcher label {
+  margin-right: 5px;
+}

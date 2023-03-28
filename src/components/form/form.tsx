@@ -2,27 +2,30 @@ import { Component, createRef, RefObject } from 'react';
 import Navigation from '../Navigation/navigation';
 import './form.css';
 
-interface Props {
-  nameInput: string;
-  dateInput: string;
-  colorSelect: string;
-  gender: 'male' | 'female';
-}
+type Props = {
+  nameInput: string | undefined;
+  dateInput: string | undefined;
+  colorSelect: string | undefined;
+  profilePicture?: File | null;
+  consentToData?: boolean;
+  gender?: string | undefined;
+};
 
 interface State {
   profilePicture: File | null;
   consentToData: boolean;
   cards: Props[];
   showMessage: boolean;
+  gender: string;
 }
 
 export default class Form extends Component<Props, State> {
   nameInput: RefObject<HTMLInputElement>;
   dateInput: RefObject<HTMLInputElement>;
   colorSelect: RefObject<HTMLSelectElement>;
-  gender: RefObject<HTMLInputElement>;
   profilePictureInput: RefObject<HTMLInputElement>;
   consentToDataInput: RefObject<HTMLInputElement>;
+  genderInput: RefObject<HTMLInputElement>;
 
   constructor(props: Props) {
     super(props);
@@ -30,15 +33,16 @@ export default class Form extends Component<Props, State> {
     this.nameInput = createRef();
     this.dateInput = createRef();
     this.colorSelect = createRef();
-    this.gender = createRef();
     this.profilePictureInput = createRef();
     this.consentToDataInput = createRef();
+    this.genderInput = createRef();
 
     this.state = {
       profilePicture: null,
       consentToData: false,
       cards: [],
       showMessage: false,
+      gender: '',
     };
   }
 
@@ -48,11 +52,16 @@ export default class Form extends Component<Props, State> {
     const name = this.nameInput.current?.value;
     const date = this.dateInput.current?.value;
     const color = this.colorSelect.current?.value;
-    const gender = this.gender.current?.value;
-    const profilePicture = this.state.profilePicture;
-    const consentToData = this.state.consentToData;
 
-    const newCard = { nameInput: name, dateInput: date, colorSelect: color, gender };
+    const newCard = {
+      nameInput: name,
+      dateInput: date,
+      colorSelect: color,
+      profilePicture: this.state.profilePicture,
+      consentToData: this.state.consentToData,
+      gender: this.state.gender,
+    };
+
     const updatedCards = [...this.state.cards, newCard];
     this.setState({ cards: updatedCards, showMessage: true });
 
@@ -60,6 +69,7 @@ export default class Form extends Component<Props, State> {
   };
 
   handleProfilePictureChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.files);
     const file = event.target.files && event.target.files[0];
     this.setState({ profilePicture: file });
   };
@@ -69,25 +79,30 @@ export default class Form extends Component<Props, State> {
     this.setState({ consentToData: consent });
   };
 
+  handleGenderChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const gender = event.target.value;
+    this.setState({ gender: gender });
+  };
+
   clearForm = () => {
     this.nameInput.current!.value = '';
     this.dateInput.current!.value = '';
     this.colorSelect.current!.value = '';
-    this.gender.current!.checked = false;
     this.profilePictureInput.current!.value = '';
     this.consentToDataInput.current!.checked = false;
+    this.genderInput.current!.checked = false;
   };
 
   renderCards = () => {
     return this.state.cards.map((card, index) => (
       <div key={index} className="card">
+        {card.profilePicture && (
+          <img src={URL.createObjectURL(card.profilePicture)} alt="Profile Picture" />
+        )}
         <div className="card-name">{card.nameInput}</div>
         <div className="card-date">{card.dateInput}</div>
         <div className="card-color">{card.colorSelect}</div>
         <div className="card-gender">{card.gender}</div>
-        {card.profilePicture && (
-          <img src={URL.createObjectURL(card.profilePicture)} alt="Profile Picture" />
-        )}
       </div>
     ));
   };
@@ -116,15 +131,34 @@ export default class Form extends Component<Props, State> {
             </select>
           </div>
           <div className="form-element">
-            <label className="form-text">Choose:</label>
-            <label className="form-text">
-              <input type="radio" name="gender" value="male" ref={this.gender} />
-              Male
-            </label>
-            <label className="form-text">
-              <input type="radio" name="gender" value="female" ref={this.gender} />
-              Female
-            </label>
+            <label className="form-text">Gender:</label>
+            <div className="gender-switcher">
+              <input
+                type="radio"
+                id="male"
+                name="gender"
+                value="male"
+                onChange={this.handleGenderChange}
+                ref={this.genderInput}
+              />
+              <label htmlFor="male">Male</label>
+              <input
+                type="radio"
+                id="female"
+                name="gender"
+                value="female"
+                onChange={this.handleGenderChange}
+              />
+              <label htmlFor="female">Female</label>
+              <input
+                type="radio"
+                id="other"
+                name="gender"
+                value="other"
+                onChange={this.handleGenderChange}
+              />
+              <label htmlFor="other">Other</label>
+            </div>
           </div>
           <div className="form-element">
             <label className="form-text">Choose a profile picture:</label>
