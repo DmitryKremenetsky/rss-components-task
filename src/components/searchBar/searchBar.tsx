@@ -31,9 +31,14 @@ export default class SearchBar extends React.Component<Props, State> {
 
   render() {
     return (
-      <div className="space-bar_container">
-        <input type="text" value={this.state.searchTerm} onChange={this.handleChange} />
-        <button>Search</button>
+      <div className="search">
+        <input
+          className="search-term"
+          type="text"
+          value={this.state.searchTerm}
+          onChange={this.handleChange}
+        />
+        <button className="search-btn">Search</button>
       </div>
     );
   }

@@ -1,11 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './navigation.css';
+import SearchBar from '../searchBar/searchBar';
 
 export default class Navigation extends React.Component {
   render(): JSX.Element {
     return (
-      <div>
+      <header>
         <div>
           <h2>
             {window.location.pathname === '/'
@@ -18,6 +19,7 @@ export default class Navigation extends React.Component {
             page
           </h2>
         </div>
+        <SearchBar />
         <div className="link-container">
           <Link className="link" to={'/'}>
             Home
@@ -29,7 +31,7 @@ export default class Navigation extends React.Component {
             From Page
           </Link>
         </div>
-      </div>
+      </header>
     );
   }
 }

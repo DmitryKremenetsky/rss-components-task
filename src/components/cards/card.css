@@ -4,7 +4,7 @@
   margin-top: 100px;
 }
 
-.card {
+.card-user {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -18,7 +18,7 @@
   box-shadow: 0 8px 16px 0 rgba(255, 255, 255, 0.2);
 }
 
-.cars-image {
+.user-img {
   width: 300px;
   height: 300px;
 }

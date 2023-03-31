@@ -7,11 +7,13 @@ export default class Card extends React.Component {
     return (
       <div className="card-wrapper">
         {data.map((card, index) => (
-          <div key={index} className="card">
-            <img className="cars-image" src={card.img} alt="users-cars" />
-            <h2>{card.name}</h2>
-            <p>age: {card.age}</p>
-            <p>car: {card.car}</p>
+          <div key={index} className="card-user">
+            <img className="user-img" src={card.img} alt="users-img" />
+            <div className="container">
+              <h2>{card.name}</h2>
+              <p>age: {card.age}</p>
+              <p>position: {card.pos}</p>
+            </div>
           </div>
         ))}
       </div>

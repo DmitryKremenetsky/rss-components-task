@@ -1,30 +1,30 @@
 [
   {
     "id": 1,
-    "img": "/green-car.jpg",
-    "name" :"John", 
-    "age": 30, 
-    "car": "Green"
+    "img": "/avatar-1.png",
+    "name": "John",
+    "age": 30,
+    "pos": "Back"
   },
   {
     "id": 2,
-    "img": "/black-car.jpg",
-    "name" :"Mark", 
-    "age": 20, 
-    "car": "Black"
+    "img": "/avatar-2.png",
+    "name": "Mark",
+    "age": 20,
+    "pos": "Front"
   },
   {
     "id": 3,
-    "img": "/white-car.jpg",
-    "name" :"Even", 
-    "age": 24, 
-    "car": "White"
+    "img": "/avatar-3.png",
+    "name": "Even",
+    "age": 24,
+    "pos": "UI"
   },
   {
     "id": 4,
-    "img": "/yellow-car.jpg",
-    "name" :"Bable", 
-    "age": 40, 
-    "car": "Yellow"
+    "img": "/avatar-4.png",
+    "name": "Nick",
+    "age": 40,
+    "pos": "Leader"
   }
 ]
