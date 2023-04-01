@@ -1,45 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './searchBar.css';
 
-type Props = Record<string, unknown>;
-interface State {
-  searchTerm: string;
-}
+const SearchBar = () => {
+  const [searchTerm, setSearchTerm] = useState<string>(() => {
+    return localStorage.getItem('searchTerm') || '';
+  });
 
-export default class SearchBar extends React.Component<Props, State> {
-  constructor(props: Props) {
-    super(props);
-    this.state = {
-      searchTerm: '',
-    };
-  }
+  useEffect(() => {
+    localStorage.setItem('searchTerm', searchTerm);
+  }, [searchTerm]);
 
-  componentDidMount() {
-    const searchTerm = localStorage.getItem('searchTerm');
-    if (searchTerm) {
-      this.setState({ searchTerm });
-    }
-  }
-
-  componentDidUpdate() {
-    localStorage.setItem('searchTerm', this.state.searchTerm);
-  }
-
-  handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    this.setState({ searchTerm: event.target.value });
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
   };
 
-  render() {
-    return (
-      <div className="search">
-        <input
-          className="search-term"
-          type="text"
-          value={this.state.searchTerm}
-          onChange={this.handleChange}
-        />
-        <button className="search-btn">Search</button>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="search">
+      <input className="search-term" type="text" value={searchTerm} onChange={handleChange} />
+      <button className="search-btn">Search</button>
+    </div>
+  );
+};
+
+export default SearchBar;
