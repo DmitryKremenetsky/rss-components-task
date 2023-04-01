@@ -95,7 +95,7 @@ export default class Form extends Component<Props, State> {
 
   renderCards = () => {
     return this.state.cards.map((card, index) => (
-      <div key={index} className="card">
+      <div key={index} className="form-card">
         {card.profilePicture && (
           <img src={URL.createObjectURL(card.profilePicture)} alt="Profile Picture" />
         )}
@@ -112,26 +112,34 @@ export default class Form extends Component<Props, State> {
       <div>
         <Navigation />
         <form className="form-container" onSubmit={this.handleOnSubmit}>
-          <div className="form-element">
-            <label className="form-text" htmlFor="name">
-              Name:
-            </label>
+          <h2 className="form-greeting">Enter your data</h2>
+          <div className="user-data">
             <input type="text" id="name" name="name" required ref={this.nameInput} />
+            <label htmlFor="name">Name:</label>
           </div>
-          <div className="form-element">
-            <label className="form-text">Date:</label>
+          <div className="user-data">
             <input type="date" id="date" name="date" required ref={this.dateInput} />
+            <label>Date:</label>
           </div>
-          <div className="form-element">
-            <label className="form-text">Choose a color:</label>
-            <select id="selectColor" name="selectColor" required ref={this.colorSelect}>
-              <option value="red">Red</option>
-              <option value="green">Green</option>
-              <option value="blue">Blue</option>
+          <div>
+            <select
+              className="select-input"
+              id="selectColor"
+              name="selectColor"
+              required
+              ref={this.colorSelect}
+            >
+              <option value="" disabled selected>
+                Select your Pos
+              </option>
+              <option>Front</option>
+              <option>Back</option>
+              <option>Leader</option>
+              <option>UI</option>
             </select>
           </div>
-          <div className="form-element">
-            <label className="form-text">Gender:</label>
+          <div className="switcher">
+            <label className="form-text">Gender</label>
             <div className="gender-switcher">
               <input
                 type="radio"
@@ -163,8 +171,8 @@ export default class Form extends Component<Props, State> {
               <label htmlFor="other">Other</label>
             </div>
           </div>
-          <div className="form-element">
-            <label className="form-text">Choose a profile picture:</label>
+          <div className="image-chooser">
+            <label className="chooser-title">Choose a profile picture</label>
             <input
               className="upload-input"
               type="file"
@@ -186,12 +194,12 @@ export default class Form extends Component<Props, State> {
             />
             <label className="form-personal">I consent to my personal data</label>
           </div>
-          <button className="button" type="submit">
+          <button className="submit-button" type="submit">
             Submit
           </button>
         </form>
         {this.state.showMessage && <div className="message">Card added successfully!</div>}
-        <div className="cards-container">
+        <div>
           <div className="cards-container">{this.renderCards()}</div>
         </div>
       </div>
