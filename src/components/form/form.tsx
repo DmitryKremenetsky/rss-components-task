@@ -76,7 +76,11 @@ export default function Form() {
     return cards.map((card, index) => (
       <div key={index} className="form-card">
         {card.profilePicture && (
-          <img src={URL.createObjectURL(card.profilePicture)} alt="Profile Picture" />
+          <img
+            className="form-image"
+            src={URL.createObjectURL(card.profilePicture)}
+            alt="Profile Picture"
+          />
         )}
         <div className="card-name">{card.nameInput}</div>
         <div className="card-date">{card.dateInput}</div>
@@ -93,11 +97,11 @@ export default function Form() {
         <h2 className="form-greeting">Enter your data</h2>
         <div className="user-data">
           <input type="text" id="name" name="name" required ref={nameInput} />
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Name</label>
         </div>
         <div className="user-data">
           <input type="date" id="date" name="date" required ref={dateInput} />
-          <label>Date:</label>
+          <label>Date</label>
         </div>
         <div>
           <select
