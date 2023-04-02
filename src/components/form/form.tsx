@@ -5,7 +5,7 @@ import './form.css';
 type Card = {
   nameInput: string;
   dateInput: string;
-  colorSelect: string;
+  UserPos: string;
   profilePicture: File | null;
   consentToData: boolean;
   gender: string;
@@ -20,7 +20,7 @@ export default function Form() {
 
   const nameInput = useRef<HTMLInputElement>(null);
   const dateInput = useRef<HTMLInputElement>(null);
-  const colorSelect = useRef<HTMLSelectElement>(null);
+  const UserPos = useRef<HTMLSelectElement>(null);
   const profilePictureInput = useRef<HTMLInputElement>(null);
   const consentToDataInput = useRef<HTMLInputElement>(null);
   const genderInput = useRef<HTMLInputElement>(null);
@@ -30,12 +30,12 @@ export default function Form() {
 
     const name = nameInput.current?.value;
     const date = dateInput.current?.value;
-    const color = colorSelect.current?.value;
+    const position = UserPos.current?.value;
 
     const newCard: Card = {
       nameInput: name || '',
       dateInput: date || '',
-      colorSelect: color || '',
+      UserPos: position || '',
       profilePicture,
       consentToData: consentToData || false,
       gender: gender || '',
@@ -66,7 +66,7 @@ export default function Form() {
   const clearForm = () => {
     if (nameInput.current) nameInput.current.value = '';
     if (dateInput.current) dateInput.current.value = '';
-    if (colorSelect.current) colorSelect.current.value = '';
+    if (UserPos.current) UserPos.current.value = '';
     if (profilePictureInput.current) profilePictureInput.current.value = '';
     if (consentToDataInput.current) consentToDataInput.current.checked = false;
     if (genderInput.current) genderInput.current.checked = false;
@@ -83,9 +83,9 @@ export default function Form() {
           />
         )}
         <div className="card-name">{card.nameInput}</div>
-        <div className="card-date">{card.dateInput}</div>
-        <div className="card-color">{card.colorSelect}</div>
-        <div className="card-gender">{card.gender}</div>
+        <div className="card-date">Date: {card.dateInput}</div>
+        <div className="card-color">User pos: {card.UserPos}</div>
+        <div className="card-gender">User gender: {card.gender}</div>
       </div>
     ));
   };
@@ -104,13 +104,7 @@ export default function Form() {
           <label>Date</label>
         </div>
         <div>
-          <select
-            className="select-input"
-            id="selectColor"
-            name="selectColor"
-            required
-            ref={colorSelect}
-          >
+          <select className="select-input" id="UserPos" name="UserPos" required ref={UserPos}>
             <option value="" disabled selected>
               Select your Pos
             </option>
@@ -127,7 +121,7 @@ export default function Form() {
               type="radio"
               id="male"
               name="gender"
-              value="male"
+              value="Male"
               required
               onChange={handleGenderChange}
               ref={genderInput}
@@ -135,7 +129,7 @@ export default function Form() {
             <label htmlFor="male">Male</label>
             <input
               type="radio"
-              id="female"
+              id="Female"
               name="gender"
               required
               value="female"
@@ -147,7 +141,7 @@ export default function Form() {
               id="other"
               name="gender"
               required
-              value="other"
+              value="Other"
               onChange={handleGenderChange}
             />
             <label htmlFor="other">Other</label>
