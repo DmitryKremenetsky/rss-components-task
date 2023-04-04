@@ -105,13 +105,10 @@ export default function Form() {
         </div>
         <div>
           <select className="select-input" id="UserPos" name="UserPos" required ref={UserPos}>
-            <option value="" disabled selected>
-              Select your Pos
-            </option>
-            <option>Front</option>
-            <option>Back</option>
-            <option>Leader</option>
-            <option>UI</option>
+            <option value="Front">Front</option>
+            <option value="Back">Back</option>
+            <option value="Leader">Leader</option>
+            <option value="UI">UI</option>
           </select>
         </div>
         <div className="switcher">
