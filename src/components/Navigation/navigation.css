@@ -1,0 +1,29 @@
+header {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.link-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.link {
+  color: #020202;
+  margin-right: 20px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+.link:last-child {
+  margin-right: 0px;
+}
+
+h2 {
+  margin: 0 auto;
+  color: #020202;
+}

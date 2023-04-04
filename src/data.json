@@ -1,0 +1,30 @@
+[
+  {
+    "id": 1,
+    "img": "/avatar-1.png",
+    "name": "John",
+    "age": 30,
+    "pos": "Back"
+  },
+  {
+    "id": 2,
+    "img": "/avatar-2.png",
+    "name": "Mark",
+    "age": 20,
+    "pos": "Front"
+  },
+  {
+    "id": 3,
+    "img": "/avatar-3.png",
+    "name": "Even",
+    "age": 24,
+    "pos": "UI"
+  },
+  {
+    "id": 4,
+    "img": "/avatar-4.png",
+    "name": "Nick",
+    "age": 40,
+    "pos": "Leader"
+  }
+]
