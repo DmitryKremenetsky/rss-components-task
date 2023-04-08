@@ -1,5 +1,4 @@
 import { useState, useRef } from 'react';
-import Navigation from '../Navigation/navigation';
 import './form.css';
 
 type Card = {
@@ -92,7 +91,6 @@ export default function Form() {
 
   return (
     <div>
-      <Navigation />
       <form className="form-container" onSubmit={handleOnSubmit}>
         <h2 className="form-greeting">Enter your data</h2>
         <div className="user-data">
