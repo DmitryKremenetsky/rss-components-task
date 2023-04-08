@@ -1,5 +1,6 @@
 .card-wrapper {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 100px;
 }
@@ -9,6 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 10px;
   color: #fff;
   box-shadow: 0 4px 8px 0 rgba(255, 255, 255, 0.2);
   transition: 0.3s;

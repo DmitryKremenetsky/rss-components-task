@@ -1,24 +1,21 @@
 import React from 'react';
 import './card.css';
-import data from '../../data.json';
+import useCharacters from './useCharacters';
 
-interface CardData {
-  img: string;
-  name: string;
-  age: number;
-  pos: string;
-}
+const Card = () => {
+  const characters = useCharacters();
 
-const Card = (): JSX.Element => {
   return (
     <div className="card-wrapper">
-      {data.map((card: CardData, index: number) => (
-        <div key={index} className="card-user">
-          <img className="user-img" src={card.img} alt="users-img" />
-          <div className="container">
-            <h2>{card.name}</h2>
-            <p>age: {card.age}</p>
-            <p>position: {card.pos}</p>
+      {characters.map((item) => (
+        <div key={item.id} className="card-user">
+          <div className="card">
+            <img src={item.image} alt="" />
+            <div className="card-body">
+              <h5 className="card-title">{item.name}</h5>
+              <p>{item.species}</p>
+              <p>{item.location.name}</p>
+            </div>
           </div>
         </div>
       ))}
