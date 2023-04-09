@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './navigation.css';
-import SearchBar from '../searchBar/searchBar';
 
 const Navigation = () => {
   const location = useLocation();
@@ -28,7 +27,6 @@ const Navigation = () => {
       <div>
         <h2>{pageTitle} page</h2>
       </div>
-      <SearchBar />
       <div className="link-container">
         <Link className="link" to="/">
           Home

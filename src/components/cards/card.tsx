@@ -3,20 +3,44 @@ import './card.css';
 import useCharacters from './useCharacters';
 
 interface CardProps {
-  searchTerm: string;
+  title: string;
+  description: string;
 }
 
-const Card = ({ searchTerm }: CardProps) => {
+const Card = ({}: CardProps) => {
   const characters = useCharacters();
+  const [searchTerm, setSearchTerm] = useState(localStorage.getItem('searchTerm') || '');
   const [filteredCharacters, setFilteredCharacters] = useState(characters);
+
   useEffect(() => {
-    setFilteredCharacters(
-      characters.filter((item) => item.name.toLowerCase().includes(searchTerm?.toLowerCase()))
-    );
+    if (!searchTerm) {
+      setFilteredCharacters(characters);
+    } else {
+      const filtered = characters.filter(
+        (character) =>
+          character.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          character.species.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredCharacters(filtered);
+    }
+    localStorage.setItem('searchTerm', searchTerm);
   }, [characters, searchTerm]);
 
+  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchTerm(event.target.value);
+  };
+
   return (
-    <div className="card-wrapper">
+    <div>
+      <div className="search">
+        <input
+          className="search-term "
+          type="text"
+          placeholder="Search"
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+      </div>
       <div className="card-wrapper">
         {filteredCharacters.map((item) => (
           <div key={item.id} className="card-user">
