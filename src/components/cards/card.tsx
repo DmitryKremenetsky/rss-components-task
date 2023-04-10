@@ -1,6 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import './card.css';
 import useCharacters from './useCharacters';
+import Modal from './modal';
+
+interface Character {
+  id: number;
+  name: string;
+  image: string;
+  species: string;
+  location: {
+    name: string;
+  };
+}
 
 interface CardProps {
   title: string;
@@ -11,6 +22,7 @@ const Card = ({}: CardProps) => {
   const characters = useCharacters();
   const [searchTerm, setSearchTerm] = useState(localStorage.getItem('searchTerm') || '');
   const [filteredCharacters, setFilteredCharacters] = useState(characters);
+  const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
 
   useEffect(() => {
     if (!searchTerm) {
@@ -23,6 +35,14 @@ const Card = ({}: CardProps) => {
     setFilteredCharacters(
       characters.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
     );
+  };
+
+  const handleCardClick = (character: Character) => {
+    setSelectedCharacter(character);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedCharacter(null);
   };
 
   return (
@@ -41,7 +61,7 @@ const Card = ({}: CardProps) => {
       </div>
       <div className="card-wrapper">
         {filteredCharacters.map((item) => (
-          <div key={item.id} className="card-user">
+          <div key={item.id} className="card-user" onClick={() => handleCardClick(item)}>
             <div className="card">
               <img src={item.image} alt="" />
               <div className="card-body">
@@ -53,6 +73,7 @@ const Card = ({}: CardProps) => {
           </div>
         ))}
       </div>
+      {selectedCharacter && <Modal onClose={handleCloseModal} character={selectedCharacter} />}
     </div>
   );
 };
