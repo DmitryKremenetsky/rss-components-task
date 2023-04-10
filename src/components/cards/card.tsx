@@ -15,19 +15,14 @@ const Card = ({}: CardProps) => {
   useEffect(() => {
     if (!searchTerm) {
       setFilteredCharacters(characters);
-    } else {
-      const filtered = characters.filter(
-        (character) =>
-          character.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-          character.species.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredCharacters(filtered);
     }
     localStorage.setItem('searchTerm', searchTerm);
   }, [characters, searchTerm]);
 
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchTerm(event.target.value);
+  const handleSearch = () => {
+    setFilteredCharacters(
+      characters.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    );
   };
 
   return (
@@ -38,8 +33,11 @@ const Card = ({}: CardProps) => {
           type="text"
           placeholder="Search"
           value={searchTerm}
-          onChange={handleSearch}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
+        <button className="search-button" onClick={handleSearch}>
+          search
+        </button>
       </div>
       <div className="card-wrapper">
         {filteredCharacters.map((item) => (
