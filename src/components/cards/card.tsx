@@ -35,7 +35,7 @@ const Card = ({}: CardProps) => {
 
   const handleSearch = async () => {
     setLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000)); // simulate a delay of 1 second
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     setFilteredCharacters(
       characters.filter((item) => item.name.toLowerCase().includes(searchTerm.toLowerCase()))
     );
