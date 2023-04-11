@@ -24,24 +24,3 @@
   width: 300px;
   height: 300px;
 }
-
-.search {
-  width: 30%;
-  position: relative;
-  display: flex;
-  margin-top: 2px;
-}
-
-.search-term {
-  width: 100%;
-  border: 3px solid #00b4cc;
-  padding: 5px;
-  height: 20px;
-  border-radius: 5px;
-  outline: none;
-  color: #9dbfaf;
-}
-
-.search-term:focus {
-  color: #00b4cc;
-}
