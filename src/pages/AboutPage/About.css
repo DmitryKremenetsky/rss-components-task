@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
