@@ -22,7 +22,7 @@ interface CardProps {
 const Card = ({}: CardProps) => {
   const [loading, setLoading] = useState(false);
   const characters = useCharacters();
-  const [searchTerm, setSearchTerm] = useState(localStorage.getItem('searchTerm') || '');
+  const [searchTerm, setSearchTerm] = useState('');
   const [filteredCharacters, setFilteredCharacters] = useState(characters);
   const [selectedCharacter, setSelectedCharacter] = useState<Character | null>(null);
 
@@ -30,7 +30,6 @@ const Card = ({}: CardProps) => {
     if (!searchTerm) {
       setFilteredCharacters(characters);
     }
-    localStorage.setItem('searchTerm', searchTerm);
   }, [characters, searchTerm]);
 
   const handleSearch = async () => {
