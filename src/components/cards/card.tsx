@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './card.css';
-import useCharacters from './useCharacters';
+import useCharacters from '../../services/userApi';
 import Modal from '../modal/modal';
 import SearchBar from '../searchBar/searchBar';
 
